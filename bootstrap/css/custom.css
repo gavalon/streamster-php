@@ -180,7 +180,6 @@
   font-size: 30px;
   width: 100vw;
   height:16%;
-  left: -20px; 
   margin-top: 13vh;
   background-color: white;
   
@@ -192,8 +191,6 @@
   position: relative;
   font-size: 40px;
   top: 20px;
-  right: 15px;
-
 }
 
 #middle-pane {
@@ -201,4 +198,7 @@
   background-image: url("../../img/green-gradient.png");
   background-size: cover;
   text-align: center;
+  font-family: oswald;
+  font-size: 1.2em;
+
 }
