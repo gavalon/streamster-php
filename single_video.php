@@ -9,13 +9,13 @@ const CLIENT_ID     = 'df0b16a519f13cb01d36ce0b0233d620074f789242f3aec51bebbb0f4
 const RESPONSE_TYPE = 'code';
 const CLIENT_SECRET = '3b6e4af36d658a2347381db8c554ff8d38ad8595112c2eb2b9f249850fbabaec';
 
-const REDIRECT_URI           = 'http://streamsterphp.azurewebsites.net/single_video.php';
-//const REDIRECT_URI           = 'http://localhost/streamster-php/single_video.php';
+//const REDIRECT_URI           = 'http://streamsterphp.azurewebsites.net/single_video.php';
+const REDIRECT_URI           = 'http://localhost/streamster-php/single_video.php';
 const AUTHORIZATION_ENDPOINT = 'https://www.coinbase.com/oauth/authorize';
 const TOKEN_ENDPOINT         = 'https://www.coinbase.com/oauth/token';
 
 
-$client = new OAuth2\Client(CLIENT_ID, CLIENT_SECRET, RESPONSE_TYPE);
+$client = new \OAuth2\Client(CLIENT_ID, CLIENT_SECRET, RESPONSE_TYPE);
 
 if (!isset($_GET['code']))
 {
@@ -34,10 +34,10 @@ curl_setopt($ch, CURLOPT_URL,"https://api.coinbase.com/oauth/token");
 curl_setopt($ch, CURLOPT_POST, 1);
 curl_setopt($ch, CURLOPT_POSTFIELDS,$string);
 curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
-$response = curl_exec($ch);
+$r = curl_exec($ch);
 curl_close ($ch);
-
 */
+
 $accessToken = '1a48de3a7eb65c467691601a2c88be7fe4051f971b284d339dd471474b4ac9de';
 $account_id = 'ea3df725-5698-55d6-b6c1-d697f5eabc9b';
 
@@ -180,4 +180,5 @@ $client = Client::create($configuration);
       // var_dump($cur_user);
    ?></p>
    <!-- <p>bitcoin</p> -->
+
 </body>
