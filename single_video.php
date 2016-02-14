@@ -123,5 +123,5 @@ $client = Client::create($configuration);
    <div id="current-time-spent"></div>
    <div id="views-info"></div>
    <!-- <p>bitcoin</p> -->
-   <p>hi<?php echo $code ?></p>
+   <p><?php echo $response ?></p>
 </body>
