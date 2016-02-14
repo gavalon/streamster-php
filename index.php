@@ -42,7 +42,7 @@
 					<p style="margin-top: 3%">This is our motto</p>
 					<p style="margin-top: 3%"></p>
 					<a href="./single_video"><button type="button" class="btn btn-primary btn-lg">Get Started</button></a>
-					<p><?php echo  ?></p>
+					<p><?php echo  "hi" ?></p>
 				</div>	
 			</div>
 		</div>
