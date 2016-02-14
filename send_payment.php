@@ -1,5 +1,5 @@
 <?php
-$accessToken = '1a48de3a7eb65c467691601a2c88be7fe4051f971b284d339dd471474b4ac9de';
+$accessToken = '68f1eb243074679ea6f1c02ddc8201968db1efa909a4cdb9d43e11250c211764';
 $account_id = 'ea3df725-5698-55d6-b6c1-d697f5eabc9b';
 $tucker_addr = '17fhrxKpaHHV4r54TbncDPiyB9GEYGkX8f';
 $grant_addr = '1Moyz5FYXLy3LFmER9ya5pruv9VHhpdx64';
@@ -14,7 +14,7 @@ $grant_addr = '1Moyz5FYXLy3LFmER9ya5pruv9VHhpdx64';
 $ch = curl_init();
 
 //$price = number_format(0.008 * 5/60 * 1/400, 7);
-$price = '0.0000547';
+$price = '0.0000546';
 
 $url = 'https://api.coinbase.com/v2/accounts/'.$account_id.'/transactions';
 $fields = array(
@@ -22,7 +22,8 @@ $fields = array(
    'amount' => $price,
    'currency' => 'BTC',
    'type' => 'send',
-   'fee' => '0.00000',
+   // 'fee' => '0.0001',
+   'fee' => '0.00009',
    'skip_notifications' => true,
 );
 
@@ -45,4 +46,6 @@ $response = curl_exec($ch);
 $err_no = curl_errno($ch);
 $httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
 curl_close($ch);
+
+var_dump($response);
 ?>

@@ -25,8 +25,7 @@
 			</div>
 			<div id="navbar" class="navbar-collapse collapse">
 				<ul class="nav navbar-nav navbar-right">
-					<li><a href="./browse.html">BROWSE</a></li>
-					<li><a href="./about.html">ABOUT</a></li>
+					<li><a href="./browse.html">LOG IN</a></li>
 				</ul>
 			</div>
 		</div>
@@ -39,7 +38,7 @@
 					<h1>Streamster</h1>
 					<p style="margin-top: 3%">Streamster & Chill ;)</p>
 					<p style="margin-top: 3%"></p>
-					<a href="./browse.html"><button type="button" class="btn btn-primary btn-lg">Explore</button></a>
+					<a href="./oauth.php"><button type="button" class="btn btn-primary btn-lg">Explore</button></a>
 				</div>	
 			</div>
 		</div>

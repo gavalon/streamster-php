@@ -33,7 +33,7 @@
          <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                <li><a href="./browse.html">BROWSE</a></li>
-               <li><a href="./about.html">ABOUT</a></li>
+               <li><a href="./profile.html">PROFILE</a></li>
             </ul>
          </div>
       </div>
@@ -60,6 +60,8 @@
                   results_list += '<a href="./single_video.php?key=' + key + '">' +
                      '<img src="' + db[key]['img-url'] + '" class="result-container img-thumbnail">' +
                      '</a>';
+               } else if (db[key].hasOwnProperty('userid') && db[key]['userid'] == '1') {
+                  sessionStorage.setItem('userkey', key);
                }
            }
            console.log(results_list);
