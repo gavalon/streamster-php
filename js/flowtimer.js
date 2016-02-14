@@ -54,12 +54,12 @@ flowplayer(function(api, root) {
     document.getElementById("time-spent").innerHTML = "To watch the whole video you'd need " + (api.video.duration * COST_PER_SECOND).toFixed(8) + " bitcoins";
     document.getElementById("current-time-spent").innerHTML = "You have spent " + totalTime * COST_PER_SECOND + " bitcoins on this video";
     if (api.playing == true)
-      startingTime = getStartTime("starting", totalTime, videoTimeCount);
+      startingTime = getStartTime("starting", totalTime, videoTimeCount, userTimeCount);
   }).on("pause", function() {
     endTime = getEndTime("Resumed", startingTime);
   }).on("resume", function() {
     if (api.playing == true)
-      startingTime = getStartTime("resumed", totalTime, videoTimeCount);
+      startingTime = getStartTime("resumed", totalTime, videoTimeCount, userTimeCount);
   }).on("finished", function() {
     endTime = getEndTime("Finished", startingTime);
   });
