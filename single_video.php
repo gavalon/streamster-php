@@ -1,6 +1,6 @@
 <?php 
 
-/*
+
 require('./php-oauth/src/OAuth2/Client.php');
 require('./php-oauth/src/OAuth2/GrantType/IGrantType.php');
 require('./php-oauth/src/OAuth2/GrantType/AuthorizationCode.php');
@@ -22,16 +22,26 @@ if (!isset($_GET['code']))
    header('Location: ' . $auth_url);
    die('Redirect');
 }
-*/
+
+$code = $_GET['code'];
+
+$ch = curl_init();
+
+$string = 'grant_type=' . 'authorization_code' . '&code=' .$code . '&client_id=df0b16a519f13cb01d36ce0b0233d620074f789242f3aec51bebbb0f4f9e1cba&client_secret=3b6e4af36d658a2347381db8c554ff8d38ad8595112c2eb2b9f249850fbabaec&redirect_uri=http://localhost/streamster/single_video';
+
+curl_setopt($ch, CURLOPT_URL,"https://api.coinbase.com/oauth/token");
+curl_setopt($ch, CURLOPT_POST, 1);
+curl_setopt($ch, CURLOPT_POSTFIELDS,$string);
+curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
+$response = curl_exec($ch);
+curl_close ($ch);
 
 
-if (!isset($_GET['code'])) {
-   include('./single.php');
-
-}
 
 
-$accessToken = $_GET['code'];
+
+
+/*
 
 include('./vendor/autoload.php');
 use \Coinbase\Wallet\Client;
@@ -39,7 +49,7 @@ use \Coinbase\Wallet\Configuration;
 $configuration = Configuration::oauth($accessToken);
 
 $client = Client::create($configuration);
-//$swag = $client->getCurrentUser();
+//$swag = $client->getCurrentUser(); */
 
 ?>
 
@@ -105,5 +115,6 @@ $client = Client::create($configuration);
    <!-- <p>To watch this video in full, you would need: </p> -->
    <div id="time-spent"></div>
    <div id="current-time-spent"></div>
+   <?php echo $response ?>
    <!-- <p>bitcoin</p> -->
 </body>
