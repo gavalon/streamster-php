@@ -171,5 +171,34 @@
 }
 
 .profile-info {
-  margin-top: 100px;
+  margin-top: 8vh;
+  text-align: center;
+}
+
+.instructions{
+  text-align: center;
+  font-size: 30px;
+  width: 100vw;
+  height:16%;
+  left: -20px; 
+  margin-top: 13vh;
+  background-color: white;
+  
+}
+
+.instructions_text{
+  font-family: oswald;
+  letter-spacing: 1.2px;
+  position: relative;
+  font-size: 40px;
+  top: 20px;
+  right: 15px;
+
+}
+
+#middle-pane {
+  height: 87.2vh;
+  background-image: url("../../img/green-gradient.png");
+  background-size: cover;
+  text-align: center;
 }
