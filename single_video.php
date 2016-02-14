@@ -1,6 +1,6 @@
 <?php 
 
-
+/*
 require('./php-oauth/src/OAuth2/Client.php');
 require('./php-oauth/src/OAuth2/GrantType/IGrantType.php');
 require('./php-oauth/src/OAuth2/GrantType/AuthorizationCode.php');
@@ -37,12 +37,12 @@ curl_setopt($ch,CURLOPT_RETURNTRANSFER, true);
 $response = curl_exec($ch);
 curl_close ($ch);
 
+*/
+$accessToken = '466a08010ad1823a68fe3a0b23edb1fec6cb9309e6af4cd23e41ad9c2765f225';
 
 
 
 
-
-/*
 
 include('./vendor/autoload.php');
 use \Coinbase\Wallet\Client;
@@ -50,7 +50,7 @@ use \Coinbase\Wallet\Configuration;
 $configuration = Configuration::oauth($accessToken);
 
 $client = Client::create($configuration);
-//$swag = $client->getCurrentUser(); */
+$swag = $client->createAccountTransaction(); 
 
 ?>
 
@@ -123,6 +123,4 @@ $client = Client::create($configuration);
    <div id="current-time-spent"></div>
    <div id="views-info"></div>
    <!-- <p>bitcoin</p> -->
-   <p><?php echo gettype($response) ?></p>
-   <p><?php echo $response ?></p>
 </body>
