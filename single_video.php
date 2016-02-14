@@ -118,13 +118,6 @@ $client = Client::create($configuration);
 
    <!-- Firebase -->
    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
-      <!-- include flowplayer -->
-   <script src="./js/flowplayer.min.js"></script>
-   <script src="./js/flowtimer.js"></script>
-
-
-
-
 </head>
 
 <body>
@@ -145,7 +138,7 @@ $client = Client::create($configuration);
          <div id="navbar" class="navbar-collapse collapse">
             <ul class="nav navbar-nav navbar-right">
                <li><a href="./browse.html">BROWSE</a></li>
-               <li><a href="./about.html">ABOUT</a></li>
+               <li><a href="./profile.html">PROFILE</a></li>
             </ul>
          </div>
       </div>
@@ -155,8 +148,7 @@ $client = Client::create($configuration);
    <!-- the player -->
 
 <div class="flowplayer" data-analytics="UA-73749016-1" title="Jelly Fight" data-swf="./js/flowplayer.swf" data-ratio="0.4167">
-      <video>
-         <source type="video/mp4" src="http://streamster.huyenchip.com/videos/jellofight.mp4">
+      <video id="video">
       </video>
    </div>
 
@@ -182,3 +174,9 @@ $client = Client::create($configuration);
    <!-- <p>bitcoin</p> -->
 
 </body>
+<footer>
+   <script src="./js/include-video"></script>
+      <!-- include flowplayer -->
+   <script src="./js/flowplayer.min.js"></script>
+   <script src="./js/flowtimer.js"></script>
+</footer>
