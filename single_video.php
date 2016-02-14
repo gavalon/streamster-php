@@ -111,7 +111,7 @@ $client = Client::create($configuration);
 
    <!-- the player -->
 
-<div class="flowplayer" data-analytics="UA-73749016-1" title="Jelly Fight" data-swf="../static/js/flowplayer.swf" data-ratio="0.4167">
+<div class="flowplayer" data-analytics="UA-73749016-1" title="Jelly Fight" data-swf="./js/flowplayer.swf" data-ratio="0.4167">
       <video>
          <source type="video/mp4" src="http://streamster.huyenchip.com/videos/jellofight.mp4">
       </video>
