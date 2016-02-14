@@ -131,7 +131,7 @@ $client = Client::create($configuration);
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" id="home_button" href="./home">
+            <a class="navbar-brand" id="home_button" href="./index.php">
                HOME
             </a>
          </div>

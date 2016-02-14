@@ -17,7 +17,7 @@ flowplayer.conf = {
 
 var totalTime = 0;
 var countDown;
-var COST_PER_SECOND = 0.00054;
+var COST_PER_SECOND = 0.008/400 //0.00054;
 
 var dbRef = new Firebase('https://streamster.firebaseio.com/');
 
