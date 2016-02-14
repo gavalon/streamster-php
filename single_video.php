@@ -10,6 +10,7 @@ const RESPONSE_TYPE = 'code';
 const CLIENT_SECRET = '3b6e4af36d658a2347381db8c554ff8d38ad8595112c2eb2b9f249850fbabaec';
 
 const REDIRECT_URI           = 'http://streamsterphp.azurewebsites.net/single_video.php';
+//const REDIRECT_URI           = 'http://localhost/streamster-php/single_video.php';
 const AUTHORIZATION_ENDPOINT = 'https://www.coinbase.com/oauth/authorize';
 const TOKEN_ENDPOINT         = 'https://www.coinbase.com/oauth/token';
 
@@ -122,4 +123,5 @@ $client = Client::create($configuration);
    <div id="current-time-spent"></div>
    <div id="views-info"></div>
    <!-- <p>bitcoin</p> -->
+   <p><?php echo $response  ?></p>
 </body>
