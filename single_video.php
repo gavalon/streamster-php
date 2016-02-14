@@ -175,7 +175,7 @@ $client = Client::create($configuration);
 
 </body>
 <footer>
-   <script src="./js/include-video"></script>
+   <script src="./js/include-video.js"></script>
       <!-- include flowplayer -->
    <script src="./js/flowplayer.min.js"></script>
    <script src="./js/flowtimer.js"></script>
