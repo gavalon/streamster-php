@@ -14,6 +14,6 @@ var videoObj = new Firebase(base_url + "/video-url");
 
 videoObj.transaction(function(url) {
     console.log("video set");
-    document.getElementById("video").innerHTML = '<source type="video/mp4" src="http://streamster.huyenchip.com/videos/jellofight.mp4">';
+    document.getElementById("video").innerHTML = '<source type="video/mp4" src="' + url + '">';
     return url;
   });
