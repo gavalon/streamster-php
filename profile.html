@@ -68,7 +68,7 @@
          //    document.getElementById("database-contents").innerHtml = JSON.stringify(dataSnapshot.val());
          // });
          dbRef.on("value", function(snapshot) {
-            var userid = $.urlParam("userid");
+            var userid = sessionStorage.getItem('userid');
             console.log(userid);
             if (!userid) return;
             // results_list = document.getElementById("results-list");

@@ -45,6 +45,7 @@
 
    <script>
      $(document).ready(function() {
+         sessionStorage.setItem('userid', '1');
          var dbRef = new Firebase('https://streamster.firebaseio.com/');
          // dbRef.on('value', function(dataSnapshot) {
          //    document.getElementById("database-contents").innerHtml = JSON.stringify(dataSnapshot.val());

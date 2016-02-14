@@ -76,7 +76,14 @@ function getStartTime(displayStr, totalTime) {
   countDown = window.setInterval(function(){
     console.log("Another second passed");
     totalTime += 1;
-    document.getElementById("current-time-spent").innerHTML = "You have spent " + totalTime * COST_PER_SECOND + " bitcoins on this video";
+    $.ajax({ url: './send_payment.php',
+       data: {action: 'test'},
+       type: 'post',
+       success: function(output) {
+                    console.log("sent payment");
+                    // document.getElementById("current-time-spent").innerHTML = "You have spent " + totalTime * COST_PER_SECOND + " bitcoins on this video";
+                }
+    });
   }, 1000);
   return time;
 }
