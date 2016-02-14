@@ -1,0 +1,75 @@
+<!doctype html>
+
+<title>
+      Streamster - Browse
+</title>
+
+<link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/bootstrap/css/custom.css">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<!-- firebase app -->  
+<script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+
+<script src="http://code.jquery.com/jquery-1.11.0.min.js"></script>
+<script src="../static/js/urlparam.js"></script>
+
+<body>
+   <!-- navbar -->
+   <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" id="home_button" href="./index.html">
+               HOME
+            </a>
+         </div>
+         <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+               <li><a href="./browse.html">BROWSE</a></li>
+               <li><a href="./about.html">ABOUT</a></li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   <!-- End of navbar -->
+
+   <!-- List of videos with thumbnails -->
+   <div id="results-list" class="results"></div>
+
+   <script>
+     $(document).ready(function() {
+         var dbRef = new Firebase('https://streamster.firebaseio.com/');
+         // dbRef.on('value', function(dataSnapshot) {
+         //    document.getElementById("database-contents").innerHtml = JSON.stringify(dataSnapshot.val());
+         // });
+         dbRef.on("value", function(snapshot) {
+            results_list = "";
+            // results_list = document.getElementById("results-list");
+            var db = snapshot.val()
+            for (var key in db) {
+               if (!db.hasOwnProperty(key)) continue;
+               if (db[key].hasOwnProperty('img-url') && db[key].hasOwnProperty('id')) {
+                  results_list += '<a href="/single_video.html?key=' + key + '">' +
+                     '<img src="' + db[key]['img-url'] + '" class="result-container img-thumbnail">' +
+                     '</a>';
+               }
+           }
+           console.log(results_list);
+           document.getElementById('results-list').innerHTML = results_list;
+
+         }, function (errorObject) {
+           console.log("The read failed: " + errorObject.code);
+         });
+      });
+   </script>
+
+   
+
+</body>

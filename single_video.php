@@ -76,6 +76,11 @@ $client = Client::create($configuration);
    <!-- include flowplayer -->
    <script src="./js/flowplayer.min.js"></script>
    <script src="./js/flowtimer.js"></script>
+   <!-- Firebase -->
+   <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+
+
+
 
 </head>
 
@@ -106,7 +111,7 @@ $client = Client::create($configuration);
 
    <!-- the player -->
 
-   <div class="flowplayer" data-analytics="UA-73749016-1" title="Stressed out" data-swf="./js/flowplayer.swf" data-ratio="0.4167">
+<div class="flowplayer" data-analytics="UA-73749016-1" title="Jelly Fight" data-swf="../static/js/flowplayer.swf" data-ratio="0.4167">
       <video>
          <source type="video/mp4" src="http://streamster.huyenchip.com/videos/jellofight.mp4">
       </video>
@@ -115,6 +120,6 @@ $client = Client::create($configuration);
    <!-- <p>To watch this video in full, you would need: </p> -->
    <div id="time-spent"></div>
    <div id="current-time-spent"></div>
-   <?php echo $response ?>
+   <div id="views-info"></div>
    <!-- <p>bitcoin</p> -->
 </body>

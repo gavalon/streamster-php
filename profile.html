@@ -1,0 +1,86 @@
+<!doctype html>
+
+<title>
+      Streamster - Profile
+</title>
+
+<link rel="stylesheet" href="../static/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="../static/bootstrap/css/custom.css">
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<!-- firebase app -->  
+<script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+
+<!-- <script src="http://code.jquery.com/jquery-1.11.0.min.js"></script> -->
+<script src="../static/js/urlparam.js"></script>
+
+<body>
+   <!-- navbar -->
+   <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+         <div class="navbar-header">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+               <span class="sr-only">Toggle navigation</span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+               <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" id="home_button" href="./index.html">
+               HOME
+            </a>
+         </div>
+         <div id="navbar" class="navbar-collapse collapse">
+            <ul class="nav navbar-nav navbar-right">
+               <li><a href="./browse.html">BROWSE</a></li>
+               <li><a href="./about.html">ABOUT</a></li>
+            </ul>
+         </div>
+      </div>
+   </nav>
+   <!-- End of navbar -->
+
+   <!-- List of videos with thumbnails -->
+   <ul class='profile-info'> 
+      <li id="username"></li>
+      <li id="view-time"></li>
+      <li id="total-payed"></li>
+      <li id="hit-quota"></li>
+   </ul>
+
+   <script>
+     $(document).ready(function() {
+         var dbRef = new Firebase('https://streamster.firebaseio.com/');
+         // dbRef.on('value', function(dataSnapshot) {
+         //    document.getElementById("database-contents").innerHtml = JSON.stringify(dataSnapshot.val());
+         // });
+         dbRef.on("value", function(snapshot) {
+            var userid = $.urlParam("userid");
+            console.log(userid);
+            if (!userid) return;
+            // results_list = document.getElementById("results-list");
+            var db = snapshot.val()
+            for (var key in db) {
+               if (!db.hasOwnProperty(key)) continue;
+               if (db[key].hasOwnProperty('userid') && db[key].hasOwnProperty('timespent') &&
+                 db[key]['userid'] == userid) {
+                  console.log(db[key]);
+                  document.getElementById('username').innerHTML = "User: " + db[key]['username'];
+                  document.getElementById('view-time').innerHTML = "Total view time: " + db[key]['timespent'];
+                  var total_payed = parseFloat(db[key]['timespent']) / 60 * 0.008;
+                  document.getElementById('total-payed').innerHTML = "Total payed for month: " + total_payed.toFixed(2);
+                  var quotaStr = (total_payed > 7.0) ? "yes" : "no";
+                  // seconds * (seconds per minute) * (dollars per minute) > dollar cap for month
+                  document.getElementById('hit-quota').innerHTML = "Hit quota for month? " + quotaStr;
+               }
+           }
+
+         }, function (errorObject) {
+           console.log("The read failed: " + errorObject.code);
+         });
+      });
+   </script>
+
+   
+
+</body>

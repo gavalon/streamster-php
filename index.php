@@ -8,8 +8,6 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 
-
-
 <body>
 	<!-- navbar -->
 	<nav class="navbar navbar-default navbar-fixed-top">
@@ -42,7 +40,6 @@
 					<p style="margin-top: 3%">This is our motto</p>
 					<p style="margin-top: 3%"></p>
 					<a href="./single_video"><button type="button" class="btn btn-primary btn-lg">Get Started</button></a>
-					<p><?php echo  "hi" ?></p>
 				</div>	
 			</div>
 		</div>
