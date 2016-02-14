@@ -38,11 +38,7 @@ $response = curl_exec($ch);
 curl_close ($ch);
 
 */
-$accessToken = '466a08010ad1823a68fe3a0b23edb1fec6cb9309e6af4cd23e41ad9c2765f225';
-
-
-
-
+$accessToken = '80231844910f0a00553eb77fd7d0f70aea751a8128745c301838d82cbe704412';
 
 include('./vendor/autoload.php');
 use \Coinbase\Wallet\Client;
@@ -50,7 +46,47 @@ use \Coinbase\Wallet\Configuration;
 $configuration = Configuration::oauth($accessToken);
 
 $client = Client::create($configuration);
-$swag = $client->createAccountTransaction(); 
+// $swag = $client->createAccountTransaction(); 
+
+$tucker_addr = '17fhrxKpaHHV4r54TbncDPiyB9GEYGkX8f';
+// $tucker_addr = 'you suck';
+
+$cur_user = $client->getCurrentUser();
+$usr_str = serialize($cur_user);
+preg_match('/\"id\".+?:\"((\w|\-)+?)\";/', $usr_str, $match);
+$user_id = $match[1];
+
+$ch = curl_init();
+
+$price = number_format(0.008 * 5/60 * 1/400, 7);
+
+$url = 'https://api.coinbase.com/v2/accounts/'.$user_id.'/transactions';
+$fields = array(
+   'type' => 'send',
+   'to' => $tucker_addr,
+   'amount' => $price,
+   'currency' => 'BTC',
+);
+
+// $transaction = Client::send($fields);
+
+$data_string = json_encode($fields);
+$curlConfig = array(
+   CURLOPT_URL            => $url,
+   CURLOPT_POST           => true,
+   CURLOPT_RETURNTRANSFER => true,
+   CURLOPT_POSTFIELDS     => $data_string,
+   CURLOPT_HTTPHEADER     => array(                                                                          
+     'Content-Type: application/json',
+     'Authorization: Bearer '. $accessToken,
+     'CB-VERSION: 2015-04-08',
+   ),
+); 
+curl_setopt_array($ch, $curlConfig);
+$response = curl_exec($ch);
+$err_no = curl_errno($ch);
+$httpcode = curl_getinfo($ch, CURLINFO_HTTP_CODE);
+curl_close($ch);
 
 ?>
 
@@ -74,11 +110,11 @@ $swag = $client->createAccountTransaction();
    <!-- for video tag based installs flowplayer depends on jQuery 1.7.2+ -->
    <script src="https://code.jquery.com/jquery-1.11.2.min.js"></script>
 
-   <!-- include flowplayer -->
-   <script src="./js/flowplayer.min.js"></script>
-   <script src="./js/flowtimer.js"></script>
    <!-- Firebase -->
    <script src="https://cdn.firebase.com/js/client/2.2.1/firebase.js"></script>
+      <!-- include flowplayer -->
+   <script src="./js/flowplayer.min.js"></script>
+   <script src="./js/flowtimer.js"></script>
 
 
 
@@ -122,5 +158,20 @@ $swag = $client->createAccountTransaction();
    <div id="time-spent"></div>
    <div id="current-time-spent"></div>
    <div id="views-info"></div>
+   <p><?php 
+      // var_dump($cur_user);
+      var_dump($response);
+
+      echo $err_no;
+      echo '<br/>';
+      echo $httpcode;
+      echo '<br/>';
+      echo $price;
+      echo '<br/>';
+      echo $url;
+      echo '<br/>';
+      var_dump($data_string);
+      // var_dump($cur_user);
+   ?></p>
    <!-- <p>bitcoin</p> -->
 </body>
