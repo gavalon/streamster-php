@@ -26,7 +26,7 @@
                <span class="icon-bar"></span>
                <span class="icon-bar"></span>
             </button>
-            <a class="navbar-brand" id="home_button" href="./index.html">
+            <a class="navbar-brand" id="home_button" href="./index.php">
                HOME
             </a>
          </div>
@@ -56,7 +56,7 @@
             for (var key in db) {
                if (!db.hasOwnProperty(key)) continue;
                if (db[key].hasOwnProperty('img-url') && db[key].hasOwnProperty('id')) {
-                  results_list += '<a href="/single_video.html?key=' + key + '">' +
+                  results_list += '<a href="/single_video.php?key=' + key + '">' +
                      '<img src="' + db[key]['img-url'] + '" class="result-container img-thumbnail">' +
                      '</a>';
                }
