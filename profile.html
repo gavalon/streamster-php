@@ -75,7 +75,7 @@
             document.getElementById('username').innerHTML = "User: " + db['username'];
             document.getElementById('view-time').innerHTML = "Total view time: " + db['timespent'];
             var total_payed = parseFloat(db['timespent']) / 60 * 0.008;
-            document.getElementById('total-payed').innerHTML = "Total payed for month: " + total_payed.toFixed(2);
+            document.getElementById('total-payed').innerHTML = "Total paid for month: " + total_payed.toFixed(2);
             var quotaStr = (total_payed > 7.0) ? "yes" : "no";
             // seconds * (seconds per minute) * (dollars per minute) > dollar cap for month
             document.getElementById('hit-quota').innerHTML = "Hit quota for month? " + quotaStr;
