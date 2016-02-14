@@ -38,7 +38,8 @@ $response = curl_exec($ch);
 curl_close ($ch);
 
 */
-$accessToken = '80231844910f0a00553eb77fd7d0f70aea751a8128745c301838d82cbe704412';
+$accessToken = '1a48de3a7eb65c467691601a2c88be7fe4051f971b284d339dd471474b4ac9de';
+$account_id = 'ea3df725-5698-55d6-b6c1-d697f5eabc9b';
 
 include('./vendor/autoload.php');
 use \Coinbase\Wallet\Client;
@@ -49,6 +50,8 @@ $client = Client::create($configuration);
 // $swag = $client->createAccountTransaction(); 
 
 $tucker_addr = '17fhrxKpaHHV4r54TbncDPiyB9GEYGkX8f';
+$grant_addr = '1Moyz5FYXLy3LFmER9ya5pruv9VHhpdx64';
+// $tucker_addr = 'tucker.leavitt@gmail.com';
 // $tucker_addr = 'you suck';
 
 $cur_user = $client->getCurrentUser();
@@ -58,14 +61,17 @@ $user_id = $match[1];
 
 $ch = curl_init();
 
-$price = number_format(0.008 * 5/60 * 1/400, 7);
+//$price = number_format(0.008 * 5/60 * 1/400, 7);
+$price = '0.0000547';
 
-$url = 'https://api.coinbase.com/v2/accounts/'.$user_id.'/transactions';
+$url = 'https://api.coinbase.com/v2/accounts/'.$account_id.'/transactions';
 $fields = array(
-   'type' => 'send',
    'to' => $tucker_addr,
    'amount' => $price,
    'currency' => 'BTC',
+   'type' => 'send',
+   'fee' => '0.00009',
+   'skip_notifications' => true,
 );
 
 // $transaction = Client::send($fields);
@@ -79,7 +85,7 @@ $curlConfig = array(
    CURLOPT_HTTPHEADER     => array(                                                                          
      'Content-Type: application/json',
      'Authorization: Bearer '. $accessToken,
-     'CB-VERSION: 2015-04-08',
+     'CB-VERSION: 2016-02-13',
    ),
 ); 
 curl_setopt_array($ch, $curlConfig);
